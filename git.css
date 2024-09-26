@@ -56,6 +56,12 @@ body{
     color: white;
 }
 
+.container .wrapper .radios {
+    display: inline-flex;
+    gap: 5px;
+}
+
+
 .message{
     display: flex;
     width: 600px;

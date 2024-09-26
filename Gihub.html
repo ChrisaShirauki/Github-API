@@ -17,6 +17,17 @@
             <label for="tag"> What repository do you want to search?</label>
             <input type="text" id="tag" name="tag">
             <button id="open" type="button" class="btn btn-info" onclick="searchRepository()">Search </button>
+            <div class="radios">
+            <label>
+              <input type="radio" name="gitSelect" value="commits" checked> Commits
+            </label><br>
+            <label>
+                <input type="radio" name="gitSelect" value="pulls"> Pull Requests
+            </label><br>
+            <label>
+                <input type="radio" name="gitSelect" value="branches"> Branches
+            </label><br>
+            </div>
     </div>
   </div>
 

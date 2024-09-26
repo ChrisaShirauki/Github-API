@@ -27,15 +27,27 @@ function searchRepository(){
         })
     document.querySelector('.message').style.display = 'flex';
     document.getElementById("result").innerHTML= "Wait a second";
-    setTimeout(findMetrics, 2000);
+    setTimeout(findMetrics, 2000);  //Wait for the search
     
 }
 
 function findMetrics(){
     for(let i=0; i<repArray.length; i++){
-        const name = repArray[i].full_name;
-        const gitCommits = `https://api.github.com/repos/${name}/commits`;
-        fetch(gitCommits,{  //Request from nominatim API to query the endpoit ( users location).
+     
+        const name = repArray[i].full_name;  // Get the name of the repository
+
+        const radios = document.getElementsByName('gitSelect'); //Take the radio group
+        var selection = ""; //Clear value
+        
+        for (const radio of radios) {
+            if (radio.checked) {
+                selection = radio.value; //Selected Radio Button
+                break;
+            }
+        }
+
+        const gitUrl = `https://api.github.com/repos/${name}/${selection}`;
+        fetch(gitUrl,{  //Request from github API to query the endpoit ( users location).
           method: 'GET',  //Search operatior that is used for data gaining.
           headers: {      // Expecting that the response will arrive in JSON format.
               'Accept' : 'application/json'
